@@ -3,7 +3,8 @@ package com.vhall.myapplication.hook;
 import android.app.Notification;
 import android.text.TextUtils;
 
-import com.vhall.vhallzoom.R;
+
+import com.vhall.myapplication.R;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -27,7 +28,7 @@ public class ProxyHandler implements InvocationHandler {
             if(args.length > 4){
                 if(args[4] instanceof Notification){
                     ((Notification) args[4]).extras.putString("android.title","Vhall");
-                    ((Notification) args[4]).icon = R.mipmap.app_icon;
+                    ((Notification) args[4]).icon = R.mipmap.bg;
                 }
             }
         }
@@ -38,7 +39,7 @@ public class ProxyHandler implements InvocationHandler {
             if(args.length > 3){
                 if(args[3] instanceof Notification){
                     ((Notification) args[3]).extras.putString("android.title","Vhall");
-                    ((Notification) args[3]).icon = R.mipmap.app_icon;
+                    ((Notification) args[3]).icon = R.mipmap.bg;
                 }
             }
         }
