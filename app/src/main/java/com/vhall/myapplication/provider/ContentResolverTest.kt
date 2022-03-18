@@ -1,10 +1,8 @@
-package com.vhall.myapplication
+package com.vhall.myapplication.provider
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
-import android.content.ContentValues
-import android.util.Log
 
 
 /**

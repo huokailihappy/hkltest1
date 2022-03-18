@@ -1,4 +1,4 @@
-package com.vhall.myapplication
+package com.vhall.myapplication.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -17,7 +17,7 @@ class MyContentProvider: ContentProvider() {
     private  var db: SQLiteDatabase?=null
 
     override fun onCreate(): Boolean {
-        var mySqlite:MySqLite = MySqLite(context!!)
+        var mySqlite: MySqLite = MySqLite(context!!)
         db = mySqlite.writableDatabase
 
         return db != null

@@ -1,4 +1,4 @@
-package com.vhall.myapplication
+package com.vhall.myapplication.math
 
 /**
  * @author hkl

@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MainActivity"
+            android:name=".model.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
         </activity>
 
         <provider
-            android:name=".MyContentProvider"
+            android:name=".provider.MyContentProvider"
             android:authorities="com.vhall.myapplication.provider"
             android:exported="true" />
 

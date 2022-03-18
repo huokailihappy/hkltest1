@@ -1,4 +1,4 @@
-package com.vhall.myapplication
+package com.vhall.myapplication.provider
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
