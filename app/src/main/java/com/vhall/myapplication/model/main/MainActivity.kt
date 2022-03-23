@@ -1,19 +1,24 @@
-package com.vhall.myapplication.model
+package com.vhall.myapplication.model.main
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.vhall.myapplication.base.BaseActivity
-import com.vhall.myapplication.base.BaseUserIntent
 import com.vhall.myapplication.databinding.ActivityTestLayoutBinding
+import com.vhall.myapplication.model.MainIntent
+import com.vhall.myapplication.model.MainModel
+import com.vhall.myapplication.model.MainViewState
+import com.vhall.myapplication.model.sort
 import com.vhall.myapplication.test.MyPlay
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
- class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding,MainIntent>(ActivityTestLayoutBinding::inflate) {
+ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(ActivityTestLayoutBinding::inflate) {
 
     private val _viewBinding by lazy {
         ActivityTestLayoutBinding.inflate(layoutInflater)
@@ -24,9 +29,15 @@ import kotlinx.coroutines.launch
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(MyPlay())
         setContentView(_viewBinding.root)
-        viewModel=MainModel(application)
+        viewModel= MainModel(application)
 
-        _viewBinding.sampleText.setOnClickListener { getList() }
+        _viewBinding.sampleText.setOnClickListener { getList()
+        val intent= Intent()
+            intent.apply {
+                data= Uri.parse("hkl://www.myapp.com/goods/?goodsId=123456")
+            }
+            startActivity(intent)
+        }
 
         observeViewModel()
     }
@@ -44,7 +55,7 @@ import kotlinx.coroutines.launch
                         _viewBinding.sampleText.text = "Idle"
                     }
                     is MainViewState.Loading -> {
-                       toastText("Loading")
+                       toast("Loading")
                     }
 
                     is MainViewState.News -> {
@@ -54,16 +65,13 @@ import kotlinx.coroutines.launch
                     }
 
                     is MainViewState.HintLoading -> {
-                        toastText("HintLoading")
+                        toast("HintLoading")
                     }
                 }
             }
         }
     }
 
-    private fun toastText(s: String) {
-        TODO("Not yet implemented")
-    }
 
     fun get() {
         lifecycleScope.launch {

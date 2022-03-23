@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vhall.myapplication">
 
     <queries>
@@ -13,7 +14,6 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +23,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".model.MainActivity"
+            android:name=".model.launch.LaunchActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            tools:ignore="Instantiatable" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <!-- 注意：path 必须有 / 前缀 -->
+                <data
+                    android:scheme="hkl"
+                    android:path="/goodsId" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".model.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +53,6 @@
             android:name=".provider.MyContentProvider"
             android:authorities="com.vhall.myapplication.provider"
             android:exported="true" />
-
     </application>
 
 </manifest>

@@ -13,5 +13,6 @@ class MyApplication : Application() {
         VHHook.binderHook()
         VHHook.hookActivityManager()
         VHHook.hookNotificationManager()
+//        VhallSdk
     }
 }

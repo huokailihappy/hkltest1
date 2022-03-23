@@ -64,6 +64,9 @@ dependencies {
     //协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 
+    api 'com.github.vhall.android.library:vh-saas-sdk:6.3.0.1-SNAPSHOT'
+
+
 }
 repositories {
     mavenCentral()

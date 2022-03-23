@@ -9,11 +9,6 @@ import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application),
     ViewModelContract {
-
-    abstract val mIntent: Channel<BaseUserIntent>
-
-
-
     override fun process() {
 
     }

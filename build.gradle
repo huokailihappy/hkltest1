@@ -21,6 +21,8 @@ allprojects {
         google()
         mavenCentral()
         maven{ url 'https://maven.aliyun.com/repository/central'}
+
+        maven {url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'}
     }
     tasks.withType(Javadoc) {
 

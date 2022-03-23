@@ -18,12 +18,8 @@ import kotlinx.coroutines.launch
  */
 class MainModel(application: Application) : BaseViewModel(application) {
 
-    override val mIntent = Channel<MainIntent>(Channel.UNLIMITED) as Channel<BaseUserIntent>
-
-
-
-
-     val _state = MutableStateFlow<MainViewState>(MainViewState.Idle)
+    val mIntent = Channel<MainIntent>()
+    val _state = MutableStateFlow<MainViewState>(MainViewState.Idle)
     val _DialogState = MutableStateFlow<MainViewState>(MainViewState.Idle)
     val mainState: StateFlow<MainViewState>
         get() = _state
@@ -43,20 +39,20 @@ class MainModel(application: Application) : BaseViewModel(application) {
     }
 
     private fun login(int: Int) {
-        _state.value = BaseViewState.Loading as MainViewState
+        _state.value = MainViewState.Loading
     }
 
     private fun fetchNews(int: Int) {
         viewModelScope.launch {
-            _state.value = BaseViewState.Loading as MainViewState
+            _state.value = MainViewState.Loading
             delay(1000)
             _state.value = try {
                 MainViewState.News(int).getList()
             } catch (e: Exception) {
-                BaseViewState.Error(e.localizedMessage) as MainViewState
+                MainViewState.Error(e.localizedMessage)
             }
             delay(1000)
-            _state.value = BaseViewState.HintLoading as MainViewState
+            _state.value = MainViewState.HintLoading
         }
     }
 }
