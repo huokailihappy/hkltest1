@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import androidx.lifecycle.lifecycleScope
 import com.vhall.myapplication.base.BaseActivity
 import com.vhall.myapplication.databinding.ActivityTestLayoutBinding
@@ -15,38 +16,56 @@ import com.vhall.myapplication.model.MainModel
 import com.vhall.myapplication.model.MainViewState
 import com.vhall.myapplication.model.sort
 import com.vhall.myapplication.test.MyPlay
+import com.vhall.myapplication.test.MyView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
- class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(ActivityTestLayoutBinding::inflate) {
+class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(ActivityTestLayoutBinding::inflate) {
 
     private val _viewBinding by lazy {
         ActivityTestLayoutBinding.inflate(layoutInflater)
     }
-     override lateinit var viewModel: MainModel
+    override lateinit var viewModel: MainModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(MyPlay())
         setContentView(_viewBinding.root)
-        viewModel= MainModel(application)
+        viewModel = MainModel(application)
 
-        _viewBinding.sampleText.setOnClickListener { getList()
-        val intent= Intent()
+        _viewBinding.sampleText.setOnTouchListener { v, event ->
+
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    toast("dd")
+                }
+                else -> {
+                    toast("dd")
+                }
+            }
+
+            false
+        }
+        _viewBinding.sampleText.setOnClickListener {
+            getList()
+            val intent = Intent()
             intent.apply {
-                data= Uri.parse("hkl://www.myapp.com/goods/?goodsId=123456")
+                data = Uri.parse("hkl://www.myapp.com/goods/?goodsId=123456")
             }
             startActivity(intent)
         }
 
         observeViewModel()
+
+        _viewBinding.myView.setOnClickListener {}
     }
 
-    private fun getList(){
+    private fun getList() {
         lifecycleScope.launch {
             viewModel.mIntent.send(MainIntent.GetListData)
         }
     }
+
     private fun observeViewModel() {
         lifecycleScope.launch {
             viewModel.mainState.collect {
@@ -55,7 +74,7 @@ import kotlinx.coroutines.launch
                         _viewBinding.sampleText.text = "Idle"
                     }
                     is MainViewState.Loading -> {
-                       toast("Loading")
+                        toast("Loading")
                     }
 
                     is MainViewState.News -> {
