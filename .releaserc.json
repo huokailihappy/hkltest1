@@ -1,0 +1,29 @@
+{
+  "branches": [
+    "master",
+    {
+      "name": "dev",
+      "prerelease": true
+    }
+  ],
+  "dryRun": false,
+  "ci": false,
+  "tagFormat": "${version}",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "package.json",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [ci-skip]"
+      }
+    ]
+  ],
+  "preset": "conventionalcommits"
+}
+

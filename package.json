@@ -1,0 +1,36 @@
+{
+  "name": "ArcDemo",
+  "version": "1.1.0",
+  "private": true,
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "conventional-changelog": "^3.1.24",
+    "conventional-changelog-conventionalcommits": "^4.5.0",
+    "node-fetch": "^2.1.2",
+    "properties-parser": "^0.3.1",
+    "request": "^2.87.0",
+    "semantic-release": "^18.0.0",
+    "semver": "^5.3.0",
+    "yargs": "^11.0.0"
+  },
+  "scripts": {
+    "setup": "npm i -g conventional-changelog-cli commitizen",
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && ./tools/fix-changelog-id.sh CHANGELOG.md && git add CHANGELOG.md",
+    "changelog-reset": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0 && ./tools/fix-changelog-id.sh CHANGELOG.md && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "babel-register": "^6.26.0"
+  },
+  "commitlint": {
+    "rules": {
+      "scope-case": [
+        0
+      ]
+    }
+  }
+}

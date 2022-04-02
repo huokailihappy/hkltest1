@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vhall.aaa" >
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
+    <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        ></application>
+
+</manifest>

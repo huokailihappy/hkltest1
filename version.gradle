@@ -1,0 +1,14 @@
+ext {
+    module_version = [
+            aaa      : "1000.0.0",
+    ]
+    //true：本地模式 false：远程模式
+    module_dependent = [
+            aaa: true,
+    ]
+
+    //true：开启本地模式 false：强制使用远程模式
+    module_config = [
+            user_local: true
+    ]
+}

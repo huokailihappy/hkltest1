@@ -1,3 +1,38 @@
 
 rootProject.name = "My Application"
 include ':app'
+include ':test1'
+apply {
+    from('version.gradle')
+}
+
+ext {
+
+}
+
+if (new Boolean(module_dependent['aaa'])) {
+    includeBuild('./feat-aaa') {
+        dependencySubstitution {
+            substitute module('com.hkl.android.base:aaa') with project(':aaa')
+        }
+    }
+}
+
+//all 是true 全部使用本地
+def loadModuleProperties() {
+    def devDefault = module_dependent
+    for (String key : devDefault.keySet()) {
+        def moduleName = "com.github.vhall.android.library:vhallyun-" + key
+        def projectName = ':' + key
+        println(' --> module' + moduleName)
+        println(' --> project' + projectName)
+
+        if (module_dependent[key]) {
+            includeBuild('./feat-aaa' + key) {
+                dependencySubstitution {
+                    substitute module(moduleName) with project(projectName)
+                }
+            }
+        }
+    }
+}
