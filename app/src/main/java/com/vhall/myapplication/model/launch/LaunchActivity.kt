@@ -17,6 +17,8 @@ class LaunchActivity() : BaseActivity<MainModel, ActivityLaunchBinding>(Activity
         if (null == savedInstanceState) {
             dispatchIntent(intent)
         }
+
+        mViewBinding.hello.setOnClickListener { toast("hello") }
     }
 
     override fun onNewIntent(intent: Intent?) {

@@ -12,11 +12,5 @@ import androidx.appcompat.widget.AppCompatTextView
 
 class MyView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle) : AppCompatTextView(context, attrs, defStyleAttr) {
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return true
-    }
 
-    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
-        return false
-    }
 }

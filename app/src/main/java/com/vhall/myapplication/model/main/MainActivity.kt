@@ -1,5 +1,6 @@
 package com.vhall.myapplication.model.main
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -27,13 +28,14 @@ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(Activity
     }
     override lateinit var viewModel: MainModel
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(MyPlay())
         setContentView(_viewBinding.root)
         viewModel = MainModel(application)
 
-        _viewBinding.sampleText.setOnTouchListener { v, event ->
+        _viewBinding.myView.setOnTouchListener { v, event ->
 
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -44,7 +46,7 @@ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(Activity
                 }
             }
 
-            false
+           super.onTouchEvent(event)
         }
         _viewBinding.sampleText.setOnClickListener {
             getList()
