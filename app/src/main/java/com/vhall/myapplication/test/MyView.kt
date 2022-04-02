@@ -9,7 +9,8 @@ import androidx.appcompat.widget.AppCompatTextView
  * @author hkl
  *Date: 2022/3/23 5:34 下午
  */
-class MyView(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle) : AppCompatTextView(context, attrs, defStyleAttr) {
+
+class MyView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle) : AppCompatTextView(context, attrs, defStyleAttr) {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return true

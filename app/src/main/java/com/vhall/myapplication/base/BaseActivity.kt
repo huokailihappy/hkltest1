@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import vhall.com.vss2.VssSdk
 
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding>(val inflateFunc: (LayoutInflater) -> VB) :
         AppCompatActivity() {

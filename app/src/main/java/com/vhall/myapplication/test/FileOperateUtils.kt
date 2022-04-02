@@ -14,7 +14,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.util.Log
-import androidx.core.location.LocationRequestCompat
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.OutputStream
