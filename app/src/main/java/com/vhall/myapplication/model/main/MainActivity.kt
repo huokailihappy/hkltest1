@@ -21,7 +21,8 @@ import com.vhall.myapplication.test.MyView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(ActivityTestLayoutBinding::inflate) {
+class MainActivity :
+    BaseActivity<MainModel, ActivityTestLayoutBinding>(ActivityTestLayoutBinding::inflate) {
 
     private val _viewBinding by lazy {
         ActivityTestLayoutBinding.inflate(layoutInflater)
@@ -36,17 +37,8 @@ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(Activity
         viewModel = MainModel(application)
 
         _viewBinding.myView.setOnTouchListener { v, event ->
-
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    toast("dd")
-                }
-                else -> {
-                    toast("dd")
-                }
-            }
-
-           super.onTouchEvent(event)
+            Log.e("touch", "${event.action}")
+            super.onTouchEvent(event)
         }
         _viewBinding.sampleText.setOnClickListener {
             getList()
@@ -58,8 +50,12 @@ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(Activity
         }
 
         observeViewModel()
-
-        _viewBinding.myView.setOnClickListener {}
+        val t = Test()
+        _viewBinding.myView.setOnClickListener {
+            Log.e("touch", "click")
+            t.setI(0)
+            t.test()
+        }
     }
 
     private fun getList() {
@@ -106,7 +102,8 @@ class MainActivity : BaseActivity<MainModel, ActivityTestLayoutBinding>(Activity
     }
 
     private suspend fun getClipBoardStr(): String {
-        val clipboardManager: ClipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipboardManager: ClipboardManager =
+            this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val mClipData = ClipData.newPlainText("Label", "我是复制的")
         clipboardManager.setPrimaryClip(mClipData)
         delay(1000L)

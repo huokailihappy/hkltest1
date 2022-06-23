@@ -10,6 +10,5 @@ import kotlinx.coroutines.flow.StateFlow
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application),
     ViewModelContract {
     override fun process() {
-
     }
 }

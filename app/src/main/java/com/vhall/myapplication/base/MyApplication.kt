@@ -1,7 +1,7 @@
 package com.vhall.myapplication.base
 
 import android.app.Application
-import com.vhall.myapplication.hook.VHHook
+import com.vhall.myapplication.myTEST.hook.VHHook
 
 /**
  * @author hkl

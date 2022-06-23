@@ -23,20 +23,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".model.worker.WorkerActivity"
+            android:exported="false" />
+        <activity
             android:name=".model.launch.LaunchActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            tools:ignore="Instantiatable" >
+            tools:ignore="Instantiatable">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <!-- 注意：path 必须有 / 前缀 -->
                 <data
-                    android:scheme="hkl"
-                    android:path="/goodsId" />
+                    android:path="/goodsId"
+                    android:scheme="hkl" />
             </intent-filter>
         </activity>
         <activity
@@ -50,8 +53,8 @@
         </activity>
 
         <provider
-            android:name=".provider.MyContentProvider"
-            android:authorities="com.vhall.myapplication.provider"
+            android:name=".myTEST.provider.MyContentProvider"
+            android:authorities="com.vhall.myapplication.myTEST.provider"
             android:exported="true" />
     </application>
 

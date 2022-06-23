@@ -1,4 +1,4 @@
-package com.vhall.myapplication.provider
+package com.vhall.myapplication.myTEST.provider
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,7 +10,7 @@ import android.net.Uri
  *Date: 2022/3/14 4:33 下午
  */
 class ContentResolverTest {
-    val uri: Uri = Uri.parse("content://com.vhall.myapplication.provider/table1")
+    val uri: Uri = Uri.parse("content://com.vhall.myapplication.myTEST.provider/table1")
 
     @SuppressLint("Range")
     fun get(context: Context): String {

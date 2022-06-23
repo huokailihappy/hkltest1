@@ -1,4 +1,4 @@
-package com.vhall.myapplication.hook
+package com.vhall.myapplication.myTEST.hook
 
 import java.lang.Exception
 
@@ -16,7 +16,7 @@ class StackUtil {
             val methodName = stackTraceElement.methodName
             try {
                 //是这个类调用这个方法才可以
-                if (className == "com.vhall.myapplication.hook.StackUtil" && methodName == "configLegal") {
+                if (className == "com.vhall.myapplication.myTEST.hook.StackUtil" && methodName == "configLegal") {
                     return true
                 }
             } catch (var8: Exception) {

@@ -62,7 +62,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
-    implementation "androidx.work:work-runtime:2.5.0"
+    implementation"androidx.work:work-runtime-ktx:2.5.0"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //协程

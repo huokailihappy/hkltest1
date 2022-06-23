@@ -1,4 +1,4 @@
-package com.vhall.myapplication.provider
+package com.vhall.myapplication.myTEST.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -44,7 +44,7 @@ class MyContentProvider: ContentProvider() {
         return 0
     }
 
-    private val AUTHORITY = "com.vhall.myapplication.provider"
+    private val AUTHORITY = "com.vhall.myapplication.myTEST.provider"
     private val PATH = "table1"
 
     //匹配成功后的匹配码
