@@ -27,11 +27,9 @@ class UploadLogWorker(context: Context, workerParameters: WorkerParameters) :
     需要重新执行返回Result.retry()
 
      */
-    override fun doWork(): Result {
+    override  fun doWork(): Result {
         Log.e("vhall_", "success")
-        getBackgroundExecutor().execute {
-            Log.e("vhall_", "execute")
-        }
+
         return Result.success()
     }
 

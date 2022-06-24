@@ -16,6 +16,7 @@ import com.vhall.myapplication.model.MainIntent
 import com.vhall.myapplication.model.MainModel
 import com.vhall.myapplication.model.MainViewState
 import com.vhall.myapplication.model.sort
+import com.vhall.myapplication.model.worker.WorkerActivity
 import com.vhall.myapplication.test.MyPlay
 import com.vhall.myapplication.test.MyView
 import kotlinx.coroutines.delay
@@ -53,8 +54,9 @@ class MainActivity :
         val t = Test()
         _viewBinding.myView.setOnClickListener {
             Log.e("touch", "click")
-            t.setI(0)
-            t.test()
+            val intent = Intent()
+            intent.setClass(mContext,WorkerActivity::class.java)
+            startActivity(intent)
         }
     }
 

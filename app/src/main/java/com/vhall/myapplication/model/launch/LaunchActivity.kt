@@ -13,7 +13,7 @@ import com.vhall.myapplication.model.MainModel
 import com.vhall.myapplication.model.worker.UploadLogWorker
 import java.util.concurrent.TimeUnit
 
-class LaunchActivity : BaseActivity<MainModel, ActivityLaunchBinding>(ActivityLaunchBinding::inflate) {
+class LaunchActivity() : BaseActivity<MainModel, ActivityLaunchBinding>(ActivityLaunchBinding::inflate) {
 
     override lateinit var viewModel: MainModel
 
