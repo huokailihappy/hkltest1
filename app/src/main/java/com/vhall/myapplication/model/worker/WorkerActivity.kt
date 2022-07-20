@@ -1,7 +1,11 @@
 package com.vhall.myapplication.model.worker
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import androidx.work.*
 import com.vhall.myapplication.base.BaseActivity
 import com.vhall.myapplication.databinding.ActivityWorkerBinding
@@ -30,10 +34,28 @@ class WorkerActivity() :
             .setConstraints(constraints)
             .setInputData(inputData)
             .build()
+
+        val manager:NotificationManager =
+            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationChannel = NotificationChannel("1", "name", NotificationManager.IMPORTANCE_HIGH);
+        //如果这里用IMPORTANCE_NOENE就需要在系统的设置里面开启渠道，通知才能正常弹出
+        manager.createNotificationChannel(notificationChannel)
+
+        //这里的第二个参数要和上面的第一个参数一样
+        val notification= NotificationCompat.Builder(this,"1")
+            .setContentTitle("这是一个内容标题")
+            .setContentText("这是一个内容文本")
+            .setWhen(System.currentTimeMillis())
+            .setSmallIcon(com.vhall.myapplication.R.mipmap.ic_launcher)
+            .setLargeIcon(BitmapFactory.decodeResource(getResources(),com.vhall.myapplication.R.mipmap.ic_launcher))
+            .build()
+//        manager.notify(1,notification);
+
+        
         //执行定时任务
-        val work1 = OneTimeWorkRequest.Builder(MyWorker::class.java)
+        val work1 = OneTimeWorkRequest.Builder(ExpeditedWorker::class.java)
             //1分钟后执行，还有其他指定单位(毫秒/秒/分钟/小时/天)
-            .setInitialDelay(1, TimeUnit.MINUTES)
+//            .setInitialDelay(1, TimeUnit.MINUTES)
             .build()
 
 
